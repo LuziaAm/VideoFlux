@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "flux-video": {
+      "command": "node",
+      "args": ["/home/luzia-tpv/FluxVideo/dist/server.js"],
+      "env": {
+        "OPENAI_API_KEY": "sk-...",
+        "VIDEO_PROVIDER": "fal",
+        "VIDEO_API_KEY": "sua-chave-fal",
+        "VIDEO_MODEL": "fal-ai/kling-video/v2.1/standard/image-to-video"
+      }
+    }
+  }
+}
