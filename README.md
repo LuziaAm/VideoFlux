@@ -48,6 +48,19 @@ Reinicie o Claude Desktop. Variáveis do bloco `env` têm prioridade sobre o `.e
 > keyframe com `generate_image`, anime com `generate_video_i2v` usando o `image_path` retornado e
 > um movimento de câmera adequado, e no final junte tudo com `assemble_video`.
 
+## Interface web (opcional)
+
+Para usar sem o Claude Desktop, há uma interface local simples:
+
+```bash
+npm run build
+npm run web          # http://localhost:3000  (porta via WEB_PORT)
+```
+
+Crie um projeto, escreva o prompt de cada cena, gere a imagem, anime e clique em
+**Montar vídeo final** — ou use **Gerar tudo** para executar o pipeline inteiro em sequência.
+Usa as mesmas chaves do `.env` e grava nos mesmos `output/<project>/`.
+
 ## Provedores de vídeo
 
 | `VIDEO_PROVIDER` | `VIDEO_MODEL` (exemplo)                              | Como funciona                                    |

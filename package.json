@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "description": "Servidor MCP local: imagem (OpenAI) -> vídeo I2V (Fal/Replicate) -> montagem final, para Claude Desktop",
   "main": "dist/server.js",
-  "bin": { "flux-video-mcp": "dist/server.js" },
+  "bin": {
+    "flux-video-mcp": "dist/server.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/server.js",
+    "web": "node dist/web.js",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js"
   },
-  "keywords": ["mcp", "claude", "video", "image-to-video"],
+  "keywords": [
+    "mcp",
+    "claude",
+    "video",
+    "image-to-video"
+  ],
   "author": "",
   "license": "ISC",
   "type": "module",

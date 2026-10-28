@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FluxVideo — Estúdio de vídeo vertical com IA</title>
+  <meta name="description" content="Interface local do FluxVideo: gere keyframes, anime cenas e monte vídeos verticais 9:16." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <h1>FluxVideo</h1>
+    </div>
+    <div class="status" id="status"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <form id="new-project-form" class="new-project">
+        <input id="new-project-input" type="text" placeholder="Novo projeto…" autocomplete="off" />
+        <button id="new-project-btn" class="btn btn-icon" type="submit" title="Criar projeto">+</button>
+      </form>
+      <p class="sidebar-label">Projetos</p>
+      <nav id="project-list" class="project-list"></nav>
+    </aside>
+
+    <main class="main">
+      <section id="empty-state" class="empty">
+        <h2>Crie ou selecione um projeto</h2>
+        <p>Cada projeto agrupa as cenas de um vídeo em <code>output/&lt;projeto&gt;/</code>.</p>
+      </section>
+
+      <section id="workspace" class="workspace" hidden>
+        <div class="workspace-head">
+          <div>
+            <h2 id="project-title"></h2>
+            <p class="muted" id="project-meta"></p>
+          </div>
+          <div class="actions">
+            <button id="refresh-btn" class="btn btn-ghost" type="button">Atualizar</button>
+            <button id="add-scene-btn" class="btn btn-ghost" type="button">+ Cena</button>
+            <button id="run-all-btn" class="btn btn-ghost" type="button">Gerar tudo</button>
+            <button id="assemble-btn" class="btn btn-primary" type="button">Montar vídeo final</button>
+          </div>
+        </div>
+
+        <div id="scenes" class="scenes"></div>
+
+        <section id="final-section" class="final" hidden>
+          <h3>Vídeo final</h3>
+          <div id="finals" class="finals"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <template id="scene-template">
+    <article class="scene">
+      <div class="scene-head">
+        <span class="scene-num"></span>
+        <button class="btn-remove" type="button" title="Remover cena (não apaga arquivos)">×</button>
+      </div>
+      <div class="media">
+        <div class="media-slot image-slot"><span>Keyframe</span></div>
+        <div class="media-slot video-slot"><span>Clipe</span></div>
+      </div>
+      <label class="field">
+        <span>Prompt da imagem</span>
+        <textarea class="prompt" rows="3" placeholder="Descrição visual detalhada da cena…"></textarea>
+      </label>
+      <button class="btn btn-secondary btn-image" type="button">Gerar imagem</button>
+      <label class="field">
+        <span>Movimento de câmera</span>
+        <textarea class="motion" rows="2" placeholder="slow dolly in, cabelo ao vento, cinematográfico"></textarea>
+      </label>
+      <div class="row">
+        <label class="field field-small">
+          <span>Duração</span>
+          <select class="duration">
+            <option value="5">5 s</option>
+            <option value="10">10 s</option>
+          </select>
+        </label>
+        <button class="btn btn-secondary btn-video" type="button">Animar</button>
+      </div>
+    </article>
+  </template>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
